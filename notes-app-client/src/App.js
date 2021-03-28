@@ -6,11 +6,30 @@ import Nav from "react-bootstrap/Nav";
 import { Auth } from "aws-amplify";
 import { LinkContainer } from "react-router-bootstrap";
 import { AppContext } from "./libs/contextLib";
+import { onError } from "./libs/errorLib";
 import "./App.css";
 
 function App() {
   const [isAuthenticated, userHasAuthenticated] = useState(false);
   const history = useHistory();
+
+  useEffect(() => {
+    onLoad();
+  }, []);
+  
+  async function onLoad() {
+    try {
+      await Auth.currentSession();
+      userHasAuthenticated(true);
+    }
+    catch(e) {
+      if (e !== 'No current user') {
+        alert(e);
+      }
+    }
+  
+    setIsAuthenticating(false);
+  }
 
   async function handleLogout() {
     await Auth.signOut();
