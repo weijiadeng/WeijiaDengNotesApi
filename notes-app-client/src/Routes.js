@@ -25,7 +25,9 @@ export default function Routes() {
             <Route exact path="/notes/:id">
                 <Notes />
             </Route>
-
+            <Route exact path="/settings">
+                <Settings />
+            </Route>
             {/* Finally, catch all unmatched routes */}
             <Route>
                 <NotFound />
