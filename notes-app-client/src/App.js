@@ -8,7 +8,8 @@ import "./App.css";
 
 function App() {
   const [isAuthenticated, userHasAuthenticated] = useState(false);
-  function handleLogout() {
+  async function handleLogout() {
+    await Auth.signOut();
     userHasAuthenticated(false);
   }
 
