@@ -16,18 +16,18 @@ function App() {
   useEffect(() => {
     onLoad();
   }, []);
-  
+
   async function onLoad() {
     try {
       await Auth.currentSession();
       userHasAuthenticated(true);
     }
-    catch(e) {
+    catch (e) {
       if (e !== 'No current user') {
-        alert(e);
+        onError(e);
       }
     }
-  
+
     setIsAuthenticating(false);
   }
 
@@ -70,7 +70,7 @@ function App() {
       </div>
     )
   );
-  
+
 }
 
 export default App;
