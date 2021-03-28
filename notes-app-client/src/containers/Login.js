@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { useHistory } from "react-router-dom";
 import { Auth } from "aws-amplify";
 import { useAppContext } from "../libs/contextLib";
 import "./Login.css";
 
 export default function Login() {
     const { userHasAuthenticated } = useAppContext();
+    const history = useHistory();
+
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -17,15 +20,16 @@ export default function Login() {
 
     async function handleSubmit(event) {
         event.preventDefault();
-
+      
         try {
-            await Auth.signIn(email, password);
-            userHasAuthenticated(true);
+          await Auth.signIn(email, password);
+          userHasAuthenticated(true);
+          history.push("/");
         } catch (e) {
-            alert(e.message);
+          alert(e.message);
         }
-    }
-
+      }
+      
     return (
         <div className="Login">
             <Form onSubmit={handleSubmit}>

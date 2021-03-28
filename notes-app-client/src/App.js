@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Routes from "./Routes";
 import Nav from "react-bootstrap/Nav";
+import { Auth } from "aws-amplify";
 import { LinkContainer } from "react-router-bootstrap";
 import { AppContext } from "./libs/contextLib";
 import "./App.css";
