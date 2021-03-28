@@ -13,6 +13,7 @@ export default function Login() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
 
     function validateForm() {
         return email.length > 0 && password.length > 0;
@@ -20,16 +21,20 @@ export default function Login() {
 
     async function handleSubmit(event) {
         event.preventDefault();
-      
+
+        setIsLoading(true);
+
         try {
-          await Auth.signIn(email, password);
-          userHasAuthenticated(true);
-          history.push("/");
+            await Auth.signIn(email, password);
+            userHasAuthenticated(true);
+            history.push("/");
         } catch (e) {
-          alert(e.message);
+            alert(e.message);
+            setIsLoading(false);
         }
-      }
-      
+    }
+
+
     return (
         <div className="Login">
             <Form onSubmit={handleSubmit}>
