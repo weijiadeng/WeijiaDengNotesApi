@@ -8,7 +8,11 @@ import Settings from "./containers/Settings";
 export default function Settings() {
     const history = useHistory();
     const [isLoading, setIsLoading] = useState(false);
+    const [stripe, setStripe] = useState(null);
 
+    useEffect(() => {
+      setStripe(window.Stripe(config.STRIPE_KEY));
+    }, []);
     function billUser(details) {
         return API.post("notes", "/billing", {
             body: details
