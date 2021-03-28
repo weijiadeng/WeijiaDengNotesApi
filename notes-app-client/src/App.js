@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "react-bootstrap/Navbar";
+import { useHistory } from "react-router-dom";
 import Routes from "./Routes";
 import Nav from "react-bootstrap/Nav";
 import { Auth } from "aws-amplify";
@@ -9,9 +10,12 @@ import "./App.css";
 
 function App() {
   const [isAuthenticated, userHasAuthenticated] = useState(false);
+  const history = useHistory();
+
   async function handleLogout() {
     await Auth.signOut();
     userHasAuthenticated(false);
+    history.push("/login");
   }
 
   return (
