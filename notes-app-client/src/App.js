@@ -11,6 +11,7 @@ import "./App.css";
 
 function App() {
   const [isAuthenticated, userHasAuthenticated] = useState(false);
+  const [isAuthenticating, setIsAuthenticating] = useState(true);
   const history = useHistory();
 
   useEffect(() => {
