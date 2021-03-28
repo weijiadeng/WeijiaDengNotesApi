@@ -3,8 +3,6 @@ import Navbar from "react-bootstrap/Navbar";
 import Routes from "./Routes";
 import Nav from "react-bootstrap/Nav";
 import { LinkContainer } from "react-router-bootstrap";
-import NotFound from "./containers/NotFound";
-import Login from "./containers/Login";
 import "./App.css";
 
 function App() {
@@ -27,13 +25,7 @@ function App() {
             </LinkContainer>
           </Nav>
         </Navbar.Collapse>
-        <Route exact path="/login">
-          <Login />
-        </Route>
-        {/* Finally, catch all unmatched routes */}
-        <Route>
-          <NotFound />
-        </Route>
+
       </Navbar>
       <Routes />
     </div>
