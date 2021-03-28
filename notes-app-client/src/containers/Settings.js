@@ -3,7 +3,6 @@ import { API } from "aws-amplify";
 import { useHistory } from "react-router-dom";
 import { onError } from "../libs/errorLib";
 import config from "../config";
-import Settings from "./containers/Settings";
 import { Elements, StripeProvider } from "react-stripe-elements";
 import BillingForm from "../components/BillingForm";
 import "./Settings.css";

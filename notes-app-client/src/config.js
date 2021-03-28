@@ -1,6 +1,6 @@
 const config = {
 
-  STRIPE_KEY: "sk_test_51IUoVZHUkyjAXMtWn0WDYQkjH8yihwfl4mXHbhnYJXWscY7JCmjswqQQEWT5tAe3cTgMzNSd8Kx1kXLiumnBNMqR00kMesmLh2",
+  STRIPE_KEY: "pk_test_51IUoVZHUkyjAXMtWDH20EiKKGNKusb7Jec0fIZQ0fyO8AbjwWxAsGK4SJRm7gGnKswYwasapUt3cmoXZNSJJwHf700zqqYVqTJ",
   s3: {
     REGION: "us-west-2",
     BUCKET: "notes-app-upload-weijia",
