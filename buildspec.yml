@@ -8,11 +8,6 @@ phases:
     commands:
       - echo Build started on `date`
       - REACT_APP_STAGE=staging npm run build
-  post_build:
-    commands:
-      # invalidate the CloudFront cache for index.html and service-worker.js
-      # to force CloudFront to update its edge locations with the new versions
-      - aws cloudfront create-invalidation --distribution-id E3JJB6RILJX921 --paths '/*'
 artifacts:
   files:
     - '**/*'
