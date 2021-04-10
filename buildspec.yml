@@ -7,7 +7,7 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - REACT_APP_STAGE=staging npm run build
+      - REACT_APP_STAGE=prod npm run build
 artifacts:
   files:
     - '**/*'
