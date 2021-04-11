@@ -8,6 +8,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import { AppContext } from "./libs/contextLib";
 import { onError } from "./libs/errorLib";
 import "./App.css";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 function App() {
   const [isAuthenticated, userHasAuthenticated] = useState(false);
@@ -22,9 +23,8 @@ function App() {
     try {
       await Auth.currentSession();
       userHasAuthenticated(true);
-    }
-    catch (e) {
-      if (e !== 'No current user') {
+    } catch (e) {
+      if (e !== "No current user") {
         onError(e);
       }
     }
@@ -70,13 +70,16 @@ function App() {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
-        <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated }}>
-          <Routes />
-        </AppContext.Provider>
+        <ErrorBoundary>
+          <AppContext.Provider
+            value={{ isAuthenticated, userHasAuthenticated }}
+          >
+            <Routes />
+          </AppContext.Provider>
+        </ErrorBoundary>
       </div>
     )
   );
-
 }
 
 export default App;
